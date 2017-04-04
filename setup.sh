@@ -320,7 +320,10 @@ COPYLEFT_LICENSE_INCLUDE = 'GPL* LGPL*'
   git apply $top_repo_dir/meta-intel-edison/utils/ncurses-fix-native-builds-when-host-has-gcc5.patch
   git apply $top_repo_dir/meta-intel-edison/utils/subversion-Fix-subversion-native-on-Fedora22.patch
   git apply $top_repo_dir/meta-intel-edison/utils/glibc-fix-native-builds-when-host-has-gcc5.patch
-
+  sed -ie 's/3.10.17-poky-edison/3.10.98-poky-edison/g' -i $top_repo_dir/meta-intel-edison/utils/create-debian-image.sh
+  sed -e '/iotkit-comm/ s/^#*/#/' -i $top_repo_dir/meta-intel-edison/meta-intel-edison-distro/recipes-core/images/edison-image.bb
+  sed -ie 's/git.eclipse.org\/gitroot\/paho\/org.eclipse.paho.mqtt.c.git/github.com\/eclipse\/paho.mqtt.c.git/g' -i  $my_build_dir/poky/meta-intel-iot-middleware/recipes-connectivity/paho-mqtt/paho-mqtt_3.1.bb
+  
   if [[ $my_sdk_host == win* ]]
   then
     do_append_layer $mingw_dir
