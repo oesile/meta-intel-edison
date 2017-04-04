@@ -96,6 +96,7 @@ mount proc $ROOTDIR/proc -t proc
 cp $ROOTDIR/etc/environment $ROOTDIR/etc/environment.sav
 cp $ROOTDIR/etc/resolv.conf $ROOTDIR/etc/resolv.conf.sav
 cp $ROOTDIR/etc/hosts $ROOTDIR/etc/hosts.sav
+cp $ROOTDIR/etc/hosts $ROOTDIR/etc/hosts.sav
 
 # Use host system network config to be able to apt-get later on
 echo `export | grep http_proxy  | sed 's/declare -x http_proxy=/Acquire::http::proxy /'`\;    >> $ROOTDIR/etc/apt/apt.conf.d/50proxy
@@ -103,7 +104,7 @@ echo `export | grep https_proxy | sed 's/declare -x https_proxy=/Acquire::https:
 echo `export | grep HTTP_PROXY  | sed 's/declare -x HTTP_PROXY=/Acquire::http::proxy /'`\;    >> $ROOTDIR/etc/apt/apt.conf.d/50proxy
 echo `export | grep HTTPS_PROXY | sed 's/declare -x HTTPS_PROXY=/Acquire::https::proxy /'`\;  >> $ROOTDIR/etc/apt/apt.conf.d/50proxy
 cp /etc/resolv.conf $ROOTDIR/etc/resolv.conf
-cp /etc/hosts $ROOTDIR/etc/hosts
+cp /etc/apt/sources.list $ROOTDIR/etc/apt
 
 CHROOTCMD="eval LC_ALL=C LANGUAGE=C LANG=C chroot $ROOTDIR"
 
